@@ -38,6 +38,6 @@ app.get('/', function(req, res) {
 
 
 
-var server = app.listen(5000, function () {
+var server = app.listen(app.get('port'), function () {
     console.log('Node server is running..');
 })
