@@ -1,0 +1,37 @@
+{
+  "name": "template",
+  "version": "1.0.0",
+  "description": "Template",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "compression-webpack-plugin": "^2.0.0",
+    "ejs": "^2.6.1",
+    "express": "*",
+    "gulp": "*",
+    "gulp-mocha": "*",
+    "http-errors": "~1.6.2",
+    "jquery": "^3.3.1",
+    "jsdom": "^14.0.0",
+    "mocha": "*",
+    "mocha-jsdom": "*",
+    "mysql2": "^1.6.5",
+    "popper.js": "^1.14.7",
+    "request": "^2.88.0",
+    "sequelize": "^5.1.0",
+    "sequelize-cli": "^5.4.0",
+    "uglify-js": "git+https://github.com/mishoo/UglifyJS2.git#harmony",
+    "uglifyjs-webpack-plugin": "^1.2.2",
+    "underscore": "*",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "author": "Micah Bell",
+  "license": "ISC"
+}
