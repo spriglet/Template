@@ -16,7 +16,7 @@ let password = '0f2c0e9a';
 
 // Option 1: Passing parameters separately
 const sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL, username, password, {
-    host: host,
+
     dialect:'mysql'
 });
 sequelize
