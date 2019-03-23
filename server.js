@@ -3,6 +3,7 @@ var app = express();
 let routes = require('./routes');
 var bodyParser = require('body-parser');
 global._ = require('underscore');
+app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
