@@ -1,22 +1,17 @@
 const Sequelize = require('sequelize');
 
 
-/*
+let sequelize;
 let host = 'localhost';   //
 let database = 'todolist'; //
 let username = 'root'; //
 let password = 'Staticpen774@';  //
 
 
- */
-let host = 'us-cdbr-iron-east-03.cleardb.net';
-let database = 'heroku_7ee3abcadd72651';
-let username = 'b965c9f20b5784';
-let password = '0f2c0e9a';
 
 
 
-if (process.env.CLEARDB_DATABASE_UR) {
+if (process.env.CLEARDB_DATABASE_URL) {
     // the application is executed on Heroku ... use the postgres database
     sequelize = new Sequelize(process.env.CLEARDB_DATABASE_UR, {
         dialect:  'mysql',
@@ -25,7 +20,11 @@ if (process.env.CLEARDB_DATABASE_UR) {
     });
 } else {
     // the application is executed on the local machine
-    sequelize = new Sequelize("postgres:///my_db");
+    // Option 1: Passing parameters separately
+    sequelize = new Sequelize(database, username, password, {
+        host: 'localhost',
+        dialect:'mysql'
+    });
 }
 
 
