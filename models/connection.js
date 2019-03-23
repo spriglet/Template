@@ -9,7 +9,7 @@ let password = 'Staticpen774@';  //
 
 
  */
-let host = ' us-cdbr-iron-east-03.cleardb.net';
+let host = 'us-cdbr-iron-east-03.cleardb.net';
 let database = 'heroku_7ee3abcadd72651';
 let username = 'b965c9f20b5784';
 let password = '0f2c0e9a';
