@@ -13,7 +13,7 @@ let password = 'Staticpen774@';  //
 
 if (process.env.CLEARDB_DATABASE_URL) {
     // the application is executed on Heroku ... use the postgres database
-    sequelize = new Sequelize(process.env.CLEARDB_DATABASE_UR, {
+    sequelize = new Sequelize(process.env.CLEARDB_DATABASE_URL, {
         dialect:  'mysql',
         protocol: 'mysql',
         logging:  true //false
