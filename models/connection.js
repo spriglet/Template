@@ -1,11 +1,6 @@
 const Sequelize = require('sequelize');
-
-
 let sequelize;
-let host = 'localhost';
-let database = 'todolist';
-let username = 'root';
-let password = 'Staticpen774@';
+
 
 
 
@@ -21,7 +16,8 @@ if (process.env.CLEARDB_DATABASE_URL) {
 } else {
     // the application is executed on the local machine
     // Option 1: Passing parameters separately
-    sequelize = new Sequelize(database, username, password, {
+    let config = require('../localconfig');
+    sequelize = new Sequelize(config.database, config.username, config.password, {
         host: 'localhost',
         dialect:'mysql',
         logging:false
