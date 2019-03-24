@@ -2,12 +2,12 @@ let mToDoLists = require('../models/todolist');
 
 function ToDoListController(){
 
-    // List all the tasks on the
+
     this.listAll = function(req,res){
+        // List all records in ToDoList
         mToDoLists.findAll({
             attributes: ['id', 'name','description']
         }).then(toDoList => {
-            console.log("All users:", JSON.stringify(toDoList, null, 4));
             res.end(JSON.stringify(toDoList));
         });
 
@@ -17,7 +17,6 @@ function ToDoListController(){
         let record  = req.body;
         // Create a new record
         mToDoLists.create(record).then(record => {
-            console.log("Jane's auto-generated ID:", record.id);
             res.end(JSON.stringify({"id": record.id}));
 
         });
@@ -26,13 +25,13 @@ function ToDoListController(){
     this.update = function (req, res) {
         let id = req.params.id;
         let task  = req.body;
-        // Change everyone without a last name to "Doe"
+        // updates a record
         mToDoLists.update(task, {
             where: {
                 id: id
             }
         }).then(() => {
-            console.log("Done");
+
         });
         res.end();
 
@@ -44,7 +43,6 @@ function ToDoListController(){
                 id:id
             }
         }).then(() => {
-            console.log("Done");
             res.end(JSON.stringify({"record_id": id}));
         });;
 

@@ -11,14 +11,14 @@ describe('Model ToDoList',function() {
     it('Add task to to do list', function(done){
         toDoList.create({ name: "Jane", description: "Doe" }).then(task => {
             record_id = task.id;
-            assert.equal(record_id>0 ,true);
+            assert.equal(record_id>0 ,true,'add record');
             done();
         });
 
     });
     it('Get to do list', function(done){
         toDoList.findAll().then(list => {;
-            assert.equal(list.length,1);
+            assert.equal(list.length,1,'Get all records');
             done();
 
         });
@@ -30,7 +30,7 @@ describe('Model ToDoList',function() {
                 id: record_id
             }
             }).then(() => {
-            console.log("Done");
+            //console.log("Done");
             done();
 
         });
@@ -42,7 +42,7 @@ describe('Model ToDoList',function() {
             }
         }).then(() => {
 
-            console.log("Done");
+            //console.log("Done");
             done();
         });
 

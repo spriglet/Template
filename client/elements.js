@@ -42,16 +42,11 @@ function Table(table){
     this.deleteRow = function(id){
         table.children('tbody').children('#'+id).remove()
     }
-
-    this.rowEditable = function(id){
-
-
-
-    }
     this.deleteALLRows  = function(){
         table.children('tbody').empty();
     }
     this.bindJSON = function(arr){
+        // Converts a json object array rows of the table
         arr = JSON.parse(arr);
         table.children('tbody').empty();
         let _this = this;

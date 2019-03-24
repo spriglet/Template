@@ -16,7 +16,6 @@ function validateStatusCode(statusCode){
     return function(err, res) {
         expect(err).to.be.null;
         expect(res).to.have.status(statusCode);
-        console.log(res.body)
     }
 }
 
@@ -37,20 +36,17 @@ function expectStatusCode(url,type,callback,data=null){
 
 describe('Makes sure routes are returning correct status codes', function() {
 
-    it('should list Task on /tasks GET', async ()=>{
+    it('should list Task', async ()=>{
         expectStatusCode('/tasks','get',validateStatusCode(200));
     },'List');
-    it('should add task /task/add',async()=>{
+    it('should add task',async()=>{
         expectStatusCode('/task/add','post',validateStatusCode(200),{"name":"Test Name","description":"Test Description"});
     },'Add');
-    it('should delete task /task/delete/1',async()=>{
-        expectStatusCode('/task/delete/1','delete',validateStatusCode(200));
-    },'Delete');
-    it('should delete task /task/edit/1',async()=>{
-        expectStatusCode('/task/edit/1','post',validateStatusCode(200),{"name":"Test Name Edit","description":"Test Description"});
+    it('should delete task',async()=>{
+        expectStatusCode('/task/delete/2','delete',validateStatusCode(200));
+    },'Delete')
+    it('should delete ',async()=>{
+        expectStatusCode('/task/edit/2','post',validateStatusCode(200),{"name":"Test Name Edit","description":"Test Description"});
     },'Edit');
-
-
-
 
 });

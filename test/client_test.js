@@ -4,6 +4,7 @@ var chai = require('chai');
 let assert = chai.assert;
 const { JSDOM } = jsdom;
 let doc = require('./testdocs/htmlDoc');
+let challenges = require('../client/challenges');
 const dom = new JSDOM(doc, {
     url: "https://test.org/",
     referrer: "https://test.com/",
@@ -42,17 +43,39 @@ describe('Table', function () {
             }
         ]
         t.bindJSON(JSON.stringify(json));
-        let str = '<thead><tr><th>name</th><th>description</th></tr></thead><tbody><tr id="0"><td>Test Name Edit</td><td>Test Description</td></tr><tr id="1"><td>Test Edit</td><td>Test Description</td></tr></tbody>';
+        let str = '<thead><tr><th>name</th><th>description</th></tr></thead><tbody><tr><td>Test Name Edit</td><td>Test Description</td></tr><tr><td>Test Edit</td><td>Test Description</td></tr></tbody>';
         assert.equal(str,table.html(),'JSON BIND');
         t.deleteALLRows();
         assert.equal('<thead><tr><th>name</th><th>description</th></tr></thead><tbody></tbody>',table.html(),'delete all rows');
         let row = {"name": "Test Edit 1", "description": "Test Description"};
         t.addRow(row,0);
-        console.log(table.html());
         t.deleteRow(0);
-        console.log(table.html());
 
 
+
+
+    });
+
+
+});
+
+describe('Challenges',function(){
+
+
+    it("Is Palindrome",function(){
+        let str = "A Toyota's a toyota";
+        assert.equal(challenges.isPalindrome(str),true);
+        str = "Hello World";
+        assert.equal(challenges.isPalindrome(str),false);
+
+    })
+    it("Merge and sort two arrays",function(){
+        let arrA = [1,3,9];
+        let arrB = [2,9,4];
+        let expectedArr = [1,2,3,4,9,9];
+        let arr = challenges.mergeSortArray(arrA,arrB);
+        for(let i = 0; i<expectedArr.length;i++)
+            assert.equal(arr[i],expectedArr[i]);
 
 
     });
