@@ -14,6 +14,7 @@ let server_url = 'http://localhost:5000';  // The url port number the server is 
 function validateStatusCode(statusCode){
 
     return function(err, res) {
+
         expect(err).to.be.null;
         expect(res).to.have.status(statusCode);
     }
@@ -34,19 +35,61 @@ function expectStatusCode(url,type,callback,data=null){
 
 }
 
-describe('Makes sure routes are returning correct status codes', function() {
+describe('User',function() {
 
-    it('should list Task', async ()=>{
-        expectStatusCode('/tasks','get',validateStatusCode(200));
-    },'List');
-    it('should add task',async()=>{
-        expectStatusCode('/task/add','post',validateStatusCode(200),{"name":"Test Name","description":"Test Description"});
+    it('Create user', async () => {
+        expectStatusCode('/user/create', 'post', validateStatusCode(200),
+            {'firstName': 'micah', 'lastName': 'Bell', 'password': 'test', 'email': 'test@test.com'});
+    }, 'Create user failed ');
+
+
+    it('login user', async () => {
+        expectStatusCode('/login', 'post', validateStatusCode(200), {"username": "test@test.com", "password": "test"});
+    }, 'Login User');
+
+    it('edit user', async () => {
+        expectStatusCode('/user/update/1', 'post', validateStatusCode(200), {"lastName": "Smith", "password": "test"});
+    }, 'Edit');
+
+    it('logout user', async () => {
+        expectStatusCode('/logout', 'get', validateStatusCode(200));
+    }, 'Edit');
+
+});
+
+
+describe('List routes', function() {
+
+    it('add list',async()=>{
+        expectStatusCode('/list/create','post',validateStatusCode(200),{"name":"Test Name","description":"Test Description"});
     },'Add');
-    it('should delete task',async()=>{
-        expectStatusCode('/task/delete/2','delete',validateStatusCode(200));
-    },'Delete')
+    it('Show lists', async ()=>{
+        expectStatusCode('/lists/show','get',validateStatusCode(200));
+    },'List');
+    it('should Edit task',async()=>{
+        expectStatusCode('/list/edit/1','post',validateStatusCode(200));
+    },'Edit')
     it('should delete ',async()=>{
-        expectStatusCode('/task/edit/2','post',validateStatusCode(200),{"name":"Test Name Edit","description":"Test Description"});
+        expectStatusCode('/list/delete/1','delete',validateStatusCode(200),{"name":"Test Name Edit","description":"Test Description"});
+    },'Delete');
+
+});
+
+
+describe('Task routes', function() {
+
+    it('add task',async()=>{
+        expectStatusCode('/task/create','post',validateStatusCode(200),{"name":"Test Name","description":"Test Description"});
+    },'Add');
+    it('Show task', async ()=>{
+        expectStatusCode('/task/show','get',validateStatusCode(200));
+    },'List');
+    it('should mark complete ',async()=>{
+        expectStatusCode('/task/edit/1','post',validateStatusCode(200),{"name":"Test Name Edit","description":"Test Description"});
     },'Edit');
+    it('should delete task',async()=>{
+        expectStatusCode('/task/delete/1','delete',validateStatusCode(200));
+    },'Delete')
+
 
 });

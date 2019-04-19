@@ -7,6 +7,6 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectPlainTextFileTypeManager">
-    <file url="file://$PROJECT_DIR$/readWriteJson.js" />
+    <file url="file://$PROJECT_DIR$/controllers/main/CRUD" />
   </component>
 </project>

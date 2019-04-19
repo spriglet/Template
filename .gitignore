@@ -1,3 +1,5 @@
+# Ignores localconfig file
+localconfig.js
 # Logs
 logs
 *.log
@@ -6,8 +8,7 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
-# Ignores localconfig file
-localconfig.js
+
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

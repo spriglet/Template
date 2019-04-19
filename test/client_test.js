@@ -59,26 +59,9 @@ describe('Table', function () {
 
 });
 
-describe('Challenges',function(){
+describe('List',function(){
 
 
-    it("Is Palindrome",function(){
-        let str = "A Toyota's a toyota";
-        assert.equal(challenges.isPalindrome(str),true);
-        str = "Hello World";
-        assert.equal(challenges.isPalindrome(str),false);
-
-    })
-    it("Merge and sort two arrays",function(){
-        let arrA = [1,3,9];
-        let arrB = [2,9,4];
-        let expectedArr = [1,2,3,4,9,9];
-        let arr = challenges.mergeSortArray(arrA,arrB);
-        for(let i = 0; i<expectedArr.length;i++)
-            assert.equal(arr[i],expectedArr[i]);
-
-
-    });
 
 
 });

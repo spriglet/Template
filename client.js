@@ -2,20 +2,17 @@ global._ = require('underscore');
 
 $(document).ready(function(){
 
- require('./client/toDoList')();
- let challenges = require('./client/challenges');
 
- $('#palindromeClick').click(function(){
-  console.log('tests')
-  let str =   $('#isPalindrome').val();
-  if(str==''){
-   $('#hIsPalindrome').text('Please enter a string');
-  }else if(challenges.isPalindrome(str)){
+   var page =  document.location.href;
 
-   $('#hIsPalindrome').text('It is a palindrome!');
-  }
-  else{
-   $('#hIsPalindrome').text("It isn't a palindrome");
-  }
- })
+   if(page.indexOf('dashboard')>0){
+      console.log(page)
+      var test = require('./client/dashboard');
+
+   }else{
+      var animations = require('./client/animation');
+      animations.sakura();
+   }
+
+
 });

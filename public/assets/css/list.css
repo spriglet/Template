@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 25%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+/* Style the list items */
+ul li ,td {
+    cursor: pointer;
+
+}
+textarea, input{
+    border: 0;
+}
+
+#tasks tbody , .btn-light, .btn-light:hover, .btn-light:active, .btn-light:visited {
+    background-color: #fbf5dd !important;
+}
+#tasks thead {background-color:#AB8463}
+#tasks tbody { background-color:#fbf5dd; }
+#tasks tbody tr {
+    border-style: outset;
+    border-left: none;
+    border-right: none;
+    border-top:none;
+    border-width: medium;
+    border-color:#AB8463;
+}
+
+#myProgress {
+    width: 100%;
+    background-color: #ddd;
+}
+
+#myBar {
+    width: 0%;
+    height: 20px;
+    background-color: #4CAF50;
+    text-align: center;
+    line-height: 20px;
+    color: white;
+
+}
+.button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 4px;
+
+
+}
+
+.button:focus {
+    outline: none;
+}
+
+#sidebar {
+    font-size:13px;
+    height: 100vh;
+    background-color: #333;
+}
+#sidebar .list-group-item {
+
+    border-radius: 0;
+    background-color: #333;
+    color: #ccc;
+    border-left: 0;
+    border-right: 0;
+    border-color: #2c2c2c;
+    white-space: nowrap;
+    text-decoration: none;
+    font-size:large;
+}
+
+
+#cPanel{
+    text-align:center;
+}
+tbody td:last-child {
+    text-align: right;
+
+}
+tbody td:first-child {
+    text-align: left;
+
+}
+#myProgress{
+    width:95%;
+    text-align:center;
+    margin-top:1%;
+}
+#tasks{
+    margin-top:1%;
+    width:95%;
+    padding-top:50px;
+}
+#list_title {
+    text-align:center;
+}
+#sidebar .list-group-item span{
+    width:85%;
+}
+#sidebar .list-group-item i{
+
+    text-align:right;
+    width:15%;
+    margin-right:2%;
+    float: right;
+}
+.clearfix{
+    clear:both
+}
+.fa-trash {
+    color: white;
+}
+.delete_list {
+    background-color:black;
+    width:20%;
+}
+
+#you_did_it{
+    left:30%;
+    z-index:100;
+    text-align:center;
+    visibility: hidden;
+
+}
+
+#you_did_it img{
+    width:50px;
+    height:50px;
+
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<% include ../partials/head %>
+
+<body>
+
+<% include ../partials/header %>
+
+<!-- Page Content -->
+
+<div id="main" class="'container">
+    <div class="row flex-column-reverse flex-md-row">
+        <div class="col-md-3 col-xs-1" id="sidebar">
+            <% include ../partials/sidebar %>
+        </div>
+        <div class="col-md-9 col-xs-11" id="cTask" >
+            <h2 id="list_title"></h2>
+            <div id="you_did_it">
+                <img src="/assets/images/you_did_it.png">
+                <h5>List Complete!</h5>
+            </div>
+            <div id="myProgress">
+                <div id="myBar">0%</div>
+            </div>
+            <table class="table table-hover" id="tasks">
+                <thead>
+                <tr>
+                    <th scope="col">
+                        <button class="btn-light" id="add_task">
+                            <span class="octicon octicon-clippy"></span>
+                            <img src="icons/plus.svg">
+                        </button>
+                    </th>
+                    <th scope="col">Name</th>
+                    <th scope="col">
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+                
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+<!-- Bootstrap core JavaScript -->
+<script src="jquery"></script>
+<script src="popper"></script>
+
+<script src="bootstrap/js/bootstrap.js"></script>
+
+<script src="assets/javascript/bootstable.js"></script>
+<script src="assets/javascript/scrolling-nav.js"></script>
+
+<!-- Plugin JavaScript -->
+<script src="assets/javascript/jquery-easing/jquery.easing.min.js"></script>
+
+<!-- Custom JavaScript for this theme -->
+
+<script src="assets/javascript/bundle.js"></script>
+
+</body>
+
+</html>

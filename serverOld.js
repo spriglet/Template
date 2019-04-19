@@ -2,6 +2,18 @@ var express = require('express');
 var app = express();
 let routes = require('./routes');
 var bodyParser = require('body-parser');
+var passport = require('./config/passport');
+var flash = require('connect-flash');
+var session = require("express-session"),
+    bodyParser = require("body-parser");
+
+
+app.use(express.static("public"));
+app.use(session({ secret: "cats" }));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
 global._ = require('underscore');
 app.set('port', (process.env.PORT || 5000));
 app.use(bodyParser.urlencoded({
@@ -22,7 +34,7 @@ app.use("/jquery", express.static(__dirname+ '/node_modules/jquery/dist/jquery.j
 routes.forEach(function(route){
      app[route.type](route.url,route.controller);
 
-})
+});
 
 // use res.render to load up an ejs view file
 
@@ -32,11 +44,24 @@ routes.forEach(function(route){
 app.set('view engine', 'ejs');
 
 // index page
-app.get('/', function(req, res) {
+app.get('/', function(req, res,next) {
+    console.log('Session Data:'+JSON.stringify(req.session))
     res.render('pages/index');
 });
 
 
+
+
+
+app.post('/login',
+    passport.authenticate('local', { successRedirect: '/',
+        failureRedirect: '/login',
+        failureFlash: true })
+);
+
+app.get('/login',function(req,res){
+    res.render('pages/login');
+})
 
 var server = app.listen(app.get('port'), function () {
     console.log('Node server is running..');

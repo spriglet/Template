@@ -1,3 +1,31 @@
 .pt-3-half {
     padding-top: 1.4rem;
 }
+
+body {
+    background-image: url('/assets/images/background.jpg');
+}
+body,html {
+   /* background-image: url('https://i.imgur.com/xhiRfL6.jpg');*/
+    height: 100%;
+    font-size:12px;
+
+}
+
+#profile-img {
+    height:180px;
+}
+.h-80 {
+    height: 80% !important;
+}
+#main{
+    height:95%;
+}
+.full-height-div {
+    height: 88%;
+    left: 0;
+}
+.jumbotron {
+    margin-bottom: 0;
+
+}

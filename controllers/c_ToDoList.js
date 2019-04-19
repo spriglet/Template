@@ -1,6 +1,6 @@
 let mToDoLists = require('../models/todolist');
 
-function ToDoListController(){
+function ToDoListController(model){
 
 
     this.listAll = function(req,res){
