@@ -52,7 +52,8 @@ var routes = [
     {"type":"post","url":"/tasks/show","controller":Task.showAll,"auth":true },
     {"type":"delete","url":"/task/delete/:id","controller":Task.delete,"auth":true },
     {"type":"post","url":"/task/edit/:id","controller":Task.update,"auth":true },
-    {"type":"post","url":"/task/complete/:id","controller":Task.complete,"auth":true }
+    {"type":"post","url":"/task/complete/:id","controller":Task.complete,"auth":true },
+    {"type":"get","url":"/about","controller":render('pages/about'),"auth":false },
 
     ]
 

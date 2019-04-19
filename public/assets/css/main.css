@@ -29,3 +29,8 @@ body,html {
     margin-bottom: 0;
 
 }
+
+p {
+    text-indent: 50px;
+    font-size:large;
+}
