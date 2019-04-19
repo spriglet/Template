@@ -4,9 +4,10 @@
 <% include ../partials/header %>
 <div class="row">
     <div class="container-fluid">
-        <div class="row align-items-center">
+        <div  class="row align-items-center">
             <div class="col-lg-3 mx-auto col-sm-3">
-                <div class="text-center">
+                <div id="login_div" class="text-center">
+                    <h3>Login</h3>
                     <p id="profile-name" class="profile-name-card"></p>
                     <form  class="form-signin" method="post" action="/login">
                         <input type="text" name="email" id="inputEmail" class="form-control form-group" placeholder="email" required focus>
@@ -19,4 +20,4 @@
     </div>
 </div>
 
-
+<%include ../partials/footer %>s
