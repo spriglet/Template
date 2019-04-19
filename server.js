@@ -70,7 +70,7 @@ passport.deserializeUser(function(id, done) {
 });
 // create the server
 const app = express();
-
+app.set('port', (process.env.PORT || 8081));
 // add & configure middleware
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
