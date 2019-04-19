@@ -70,7 +70,7 @@ passport.deserializeUser(function(id, done) {
 });
 // create the server
 const app = express();
-app.set('port', (process.env.PORT || 8081));
+app.set('port', (process.env.PORT || 5000));
 // add & configure middleware
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -176,6 +176,6 @@ app.get('/login', (req, res) => {
 
 
 // tell the server what port to listen on
-app.listen(5000, () => {
+app.listen(app.get('port'), () => {
     console.log('Listening on localhost:5000')
 })
