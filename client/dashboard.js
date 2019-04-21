@@ -36,7 +36,6 @@ function Task(){
     }
     this.bindJSON = function(json){
         // Binds list items to the list table
-
         json = json.map(function(obj) { // Is used to add button controls and "complete" text to the first column
             let record = {};
             record.id = obj.id;
@@ -62,8 +61,6 @@ function Task(){
         /* Gets all the task associated with a list.  */
         listId = lId;
         http.POST('/tasks/show',{'listId':listId}, function(data) {
-            console.log('Task Show')
-            console.log(data)
             if(data.length){
                 _this.bindJSON(data);
             }else{
@@ -93,7 +90,6 @@ function Task(){
                 } else {
                     width++;
                 }
-                console.log(width)
 
 
             }else{
@@ -104,7 +100,6 @@ function Task(){
                 }
             }
             if(width>=100){
-                console.log('test')
                 $('#you_did_it').css('visibility','visible');
 
 
@@ -117,22 +112,28 @@ function Task(){
         }
 
     }
+    var showStats = function(stats){
+
+       let str = 'Tasks:'+stats.tasks+' Completed:'+stats.complete+' Incomplete:'+(stats.tasks - stats.complete).toString();
+        tasks.jQ.children('thead').children('tr').children('th:last-child').css('text-align','right');
+       tasks.jQ.children('thead').children('tr').children('th:last-child').text(str);
+
+    }
     var task_stats = function(){
-        return {"tasks":$('#tasks tbody tr').length , "complete":$('#tasks tbody .complete').length} ;
+        let obj = {"tasks":$('#tasks tbody tr').length , "complete":$('#tasks tbody .complete').length}
+        showStats(obj);
+        return obj;
     }
     this.save_edit = function(){
 
         var task_id = getRow($(this)).attr('id');
         var arr = tasks.makeUnEditable(getRow($(this)),['name','description'],["0","3"]);
-        console.log(arr);
         var record = {'name':arr[0],'description':arr[1],'listId':listId};
 
         let button = $(this);
         if(parseInt(task_id)){
 
             http.POST('/task/edit/'+task_id,record,function(){
-                console.log('edit')
-                console.log(record)
                 button.children('img').attr('src',"icons/pencil.svg");
                 button.attr('class','button btn-light edit_task');
                 getRow(button).children('td').children('.complete_task').css('visibility','visible');
@@ -152,8 +153,6 @@ function Task(){
                 tasks.makeUnEditable(getRow(button),['name'],["0","2"]);
             });
         }
-
-
     }
     this.edit = function(){
         var id = getId($(this));
@@ -169,14 +168,12 @@ function Task(){
 
             $('#tasks tbody #'+id).remove();
             progressBar();
-            console.log('delete task')
         })
 
     }
 
     this.complete = function(){
 
-        console.log('complete task');
         var row = getRow($(this));
         row.children('td').children('.complete_task').remove();
         row.attr('class','complete');
@@ -186,9 +183,8 @@ function Task(){
         $('#tasks tbody').append(tr);
         progressBar();
         let button =  $(this);
-        console.log(row.attr('id'))
         http.POST('/task/complete/'+row.attr('id'),{},function(){
-            console.log('complete')
+
             button.children('img').attr('src',"icons/pencil.svg");
             getRow(button).children('td').children('.complete_task').css('visibility','visible');
 
@@ -228,7 +224,6 @@ function dashboard(){
 
     function hideTaskControl(){
         var num_list = $('#lists').children().length;
-        console.log('Hide Tasks')
         console.log(num_list)
         if(num_list===0){
             $('#cTask').css('visibility','hidden');
@@ -288,7 +283,6 @@ function dashboard(){
     $("#add_list").click(function(){
         // Adds a list to the dom and calls the route /list/create
        let name =  $('#list_name').val();
-       console.log(name);
        if(name!==''){
            var record = {"name":name};
 

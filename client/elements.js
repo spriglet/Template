@@ -9,7 +9,7 @@ function createElement(type){
 
 function Table(table){
 
-
+    this.jQ = table;
     this.addHeaders = function (headers){
         let tr = createElement('tr');
 
